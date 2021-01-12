@@ -1,0 +1,18 @@
+<div class="topnav" id="myTopnav">
+  <a href="#" class="active">
+    <img src="../../../assets/img/home.png" class="imageHome">
+  </a>
+  
+  <div *ngIf="user$ | async as user; else login">
+    <a href="#" *ngIf="user" (click)="onLogout()">Cerrar sesión</a>
+  </div>
+
+  <ng-template #login>
+    <a [routerLink]="['/login']">Login</a>
+    <a [routerLink]="['/register']">Registrarse</a>
+  </ng-template>
+
+  <a class="icon" (click)="responsiveMenu()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>

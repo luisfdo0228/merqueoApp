@@ -1,0 +1,13 @@
+    
+    <div class="card-post">
+        <form class="form-container" [formGroup]="postForm">
+            <input formControlName="postText" class="inputComments" placeholder="Escribe aqui tu estado" type="text">
+        </form>
+        <hr>
+        <div class="space-actions">
+            <div></div>
+            <div class="divRigth">
+                <button (click)="postSend()" class="postBtn">Publicar</button>
+            </div>
+        </div>
+    </div>

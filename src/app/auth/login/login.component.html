@@ -1,0 +1,26 @@
+
+    <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        
+        <div class="alert" *ngIf="message">
+            {{messageText}}.
+        </div>
+
+        <div class="titles">
+            <h1>LOGIN</h1>
+        </div>
+
+        <div>
+            <label for="email"><b>Email</b></label>
+            <input type="email" formControlName="email" placeholder="Ingresa el Email">
+            <label for="psw"><b>Password</b></label>
+            <input type="password" formControlName="password" placeholder="Ingresa el Password">
+        </div>
+
+        <div>
+            <button type="submit" class="btn">Login</button>
+        </div>
+      
+    </form>
+
+
+

@@ -1,0 +1,40 @@
+.form-container {
+  max-width: 300px;
+  padding: 80px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.titles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container input[type=email], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form-container input[type=email]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container .btn {
+  background-color: #d93077;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}

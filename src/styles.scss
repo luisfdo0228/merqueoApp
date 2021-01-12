@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&family=Yusei+Magic&display=swap');
+
+body{
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+
+.alert {
+    padding: 20px;
+    background-color: #d93077;
+    color: white;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+
+.alert-success {
+    padding: 20px;
+    background-color: black;
+    color: white;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+

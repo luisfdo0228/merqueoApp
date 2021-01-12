@@ -1,0 +1,29 @@
+    <form class="form-container" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+        <div class="alert" *ngIf="message">
+            {{messageTextEmail}}.
+        </div>
+        <div class="alert" *ngIf="message">
+            {{messageTextPassword}}.
+        </div>
+
+        <div class="alert-success" *ngIf="messageSuccess">
+            {{messageTextSuccess}}.
+        </div>
+
+        <div class="titles">
+            <h1>REGISTRO</h1>
+        </div>
+
+        <div>
+            <label for="email"><b>Email</b></label>
+            <input type="email" formControlName="email" placeholder="Ingresa el Email">
+            <label for="psw"><b>Password</b></label>
+            <input type="password" formControlName="password" placeholder="Ingresa el Password">
+        </div>
+
+        <div>
+            <button type="submit" class="btn">REGISTRAR</button>
+        </div>
+    
+    </form>

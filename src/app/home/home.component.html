@@ -1,0 +1,54 @@
+    
+
+    <div class="container-f" *ngIf="user$ | async as user; else login">
+        <div class="container center">
+            <app-to-post (toPost)="toPost($event)"></app-to-post>
+            <div class="card" *ngFor="let notice of notices">
+                <div>
+                    <img class="img-c" src="../../../assets/img/person-icon.png">
+                    <h4 class="userEmail">{{notice.emailUser}}</h4>
+                    <img *ngIf="user.email === notice.emailUser" (click)="deletePost(notice._id)" class="img-d" src="../../../assets/img/delete.png">
+
+                </div>
+                <p>{{notice.publication}}</p>
+                <div id="infoLikesComments">
+                    <div class="p-left">
+                        <div class="circle"><span class="likeCont">{{notice.likes}}</span></div>
+                    </div>
+                    <div *ngIf="notice.comments.length > 0" (click)="viewComments(notice)" class="p-right cursorView">
+                        {{notice.comments.length}} comentarios
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <div (click)="moreLike(notice)" class="p-left borderLike">
+                        <span class="actionsRed">Me gusta</span>
+                    </div>
+                    <div (click)="viewComments(notice)" class="p-right borderComments">
+                        <span class="actionsRed">Comentar</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="elemetComments" *ngIf="notice.viewComments">
+                    <div *ngFor="let comment of notice.comments">
+                        <img class="img-coments" src="../../../assets/img/person-icon.png">
+                        <b class="userEmailComents">{{comment.emailUser}}</b>
+                        <p class="textComen">{{comment.publication}}</p>
+                    </div>
+                    <form class="form-container" [formGroup]="commentForm" (ngSubmit)="onComment(notice)">
+                        <input formControlName="commentText" class="inputComments" placeholder="Escribe un comentario" type="text">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #login>
+        <div class="container-f">
+            <div class="">
+                <h2>MerqueoApp</h2>
+                <p>Aca podras publicar tus estados, inicia sesión para que empieces a publicar!!</p>
+            </div>
+        </div>
+    </ng-template>
+
