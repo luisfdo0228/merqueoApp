@@ -4,7 +4,7 @@
   </a>
   
   <div *ngIf="user$ | async as user; else login">
-    <a href="#" *ngIf="user" (click)="onLogout()">Cerrar sesión</a>
+    <a href="#" *ngIf="user" (click)="onLogout()">Salir</a>
   </div>
 
   <ng-template #login>

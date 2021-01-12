@@ -1,13 +1,18 @@
+$white: #ffffff;
+$forty:40px;
+$ten:10px;
+$auto:auto;
+
 .card-post{
     border: 1px solid #E1E2E1;
-    background-color: white;
-    width: 550px;
-    min-height: auto;
+    background-color: $white;
+    width: $auto;
+    min-height: $auto;
     display: flex;
     flex-direction: column;
     padding: 20px;
     margin: 20px;
-    border-radius: 10px;
+    border-radius: $ten;
 }
 
 hr{
@@ -29,11 +34,11 @@ hr{
     text-decoration: none;
     font-weight: 600;
     font-size: 15px;
-    color: #ffffff;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
+    color: $white;
+    padding-top: $ten;
+    padding-bottom: $ten;
+    padding-left: $forty;
+    padding-right: $forty;
     background-color: black;
     cursor: pointer;
 }
@@ -47,7 +52,7 @@ hr{
     padding: 15px;
     margin: 5px 0 22px 0;
     border: none;
-    background: #ffffff;
+    background: $white;
 }
 
 .space-actions{

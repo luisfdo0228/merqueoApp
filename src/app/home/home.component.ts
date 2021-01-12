@@ -72,10 +72,6 @@ export class HomeComponent implements OnInit {
             comments : e.payload.doc.data().comments,
           }
         })
-
-        console.log('.-.-.-.-.');
-        console.log(this.notices)
-        console.log('.-.-.-.-.');
       },
       error =>{
         console.log(error);

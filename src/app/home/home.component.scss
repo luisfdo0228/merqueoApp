@@ -3,7 +3,7 @@ $point: #d93077;
 $point-light: lighten($point, 5%);
 
 
-$card_width: 550px;
+$card_width: auto;
 $card_height: auto;
 $card_padding: 20px;
 $card-bgcolor: white;
@@ -11,15 +11,17 @@ $card_margin: 20px;
 $card_round: 10px;
 $card-shadow: -10px -10px 20px 0px $point-light;
 $pointer: pointer;
-
+$center: center;
+$flex:flex;
+$cientpx: 100px;
 $card-padding-basis: 15px;
 $card_head_padding: 0px 0px $card-padding-basis 0px;
 
 .container-f {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 100px;
+    display: $flex;
+    align-items: $center;
+    justify-content: $center;
+    padding-top: $cientpx;
 }
 
 
@@ -32,8 +34,7 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
   width: 80%;
   min-height: 50vh;  
   display: -webkit-box;  
-  display: -ms-flexbox;  
-  // display: flex;
+  display: -ms-flexbox;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   
@@ -42,12 +43,12 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
 }
 
 .center{
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-align: $center;
+      -ms-flex-align: $center;
+          align-items: $center;
+  -webkit-box-pack: $center;
+      -ms-flex-pack: $center;
+          justify-content: $center;
           max-width: 700px;
 }
 
@@ -57,7 +58,7 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
   min-height: $card_height;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: $flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -100,7 +101,7 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
   .borderLike{
     padding: 5px 5px 5px 5px;
     width: 46%;
-    text-align: center;
+    text-align: $center;
   }
 
   .borderLike:hover{
@@ -111,7 +112,7 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
   .borderComments{
     padding: 5px 5px 5px 5px;
     width: 49%;
-    text-align: center;
+    text-align: $center;
   }
 
   .borderComments:hover{
@@ -175,6 +176,7 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
   .userEmail{
     padding-left: 45px;
     color: #c60055;
+    font-size: 15px;
   }
 
   .userEmailComents{
@@ -235,12 +237,12 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
 
 
 @-webkit-keyframes line-show {
-  from {margin: 0px 100px;}
+  from {margin: 0px $cientpx;}
   to {margin: 0px;}
 }
 
 @keyframes line-show {
-    from {margin: 0px 100px;}
+    from {margin: 0px $cientpx;}
     to {margin: 0px;}
 }
   
