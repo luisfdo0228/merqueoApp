@@ -25,6 +25,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se encarga
+   * de llamar el servicio de logeo acceder al sistema
+   */
   async onLogin(){
     const {email, password} = this.loginForm.value;
     try {
@@ -42,8 +48,12 @@ export class LoginComponent implements OnInit {
   }
 
 
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se encarga
+   * de mostrarle al usuario si esta ingresando los datos mal
+   */
   presentMessage(){
-
     this.messageText = 'Datos erroneos';
     this.message = true;
     setTimeout(()=> {

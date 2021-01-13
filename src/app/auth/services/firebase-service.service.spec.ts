@@ -1,16 +1,21 @@
-import { TestBed } from '@angular/core/testing';
-
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FirebaseServiceService } from './firebase-service.service';
 
 describe('FirebaseServiceService', () => {
-  let service: FirebaseServiceService;
+  let component: FirebaseServiceService;
+  let fixture: ComponentFixture<FirebaseServiceService>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [FirebaseServiceService]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(FirebaseServiceService);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+    fixture = TestBed.createComponent(FirebaseServiceService);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 });

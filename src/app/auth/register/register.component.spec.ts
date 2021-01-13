@@ -1,17 +1,18 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RegisterComponent } from './register.component';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
-    })
-    .compileComponents();
-  });
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [RegisterComponent]
+    }).compileComponents();
+    
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterComponent);
@@ -19,7 +20,4 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

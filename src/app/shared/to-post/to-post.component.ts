@@ -19,6 +19,12 @@ export class ToPostComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que sirve para
+   * enviarle al componente padre (home) la publicacion que se debe crear
+   */
   postSend(){
     if(this.postForm.get('postText').value){
       this.toPost.emit(this.postForm.get('postText').value);

@@ -11,55 +11,28 @@ import { FormGroup, FormControl } from '@angular/forms';
   providers: [AuthService, FirebaseServiceService]
 })
 export class HomeComponent implements OnInit {
-
+  // declaracion de variables
   public user$: Observable<any> = this.authSvc.afAuth.user;
   user = JSON.parse(sessionStorage.getItem('dataSesion'));
-
-  // config:any;
-  // collection = {count:60, data:[]}
-  
-
+  notices = []
   commentForm = new FormGroup({
     commentText: new FormControl(''),
   });
 
-
-  
-
-
-  notices = [
-    // {
-    //   _id : '1212kjkkjk',
-    //   emailUser : 'hluisfernando1@gmail.com',
-    //   publication : 'lo que se viene hoy es muy interesante',
-    //   likes:2,
-    //   viewComments: false,
-    //   comments:[
-    //     {_id:'28dj', emailUser:'g@gmail.com', publication:'lo es!!'},
-    //     {_id:'heh2g2', emailUser:'a@gmail.com', publication:'no lo creo'},
-    //     {_id:'6hsg', emailUser:'c@gmail.com', publication:'puede ser, pero debemos esperar.'},
-    //   ]
-    // },
-    // {
-    //   _id : 'ff_kj223',
-    //   emailUser : 'jaimeLan@gmail.com',
-    //   publication : 'dias duros para el empleo en colombia',
-    //   likes:2,
-    //   comments:[
-    //     {_id:'dufuf7d9798', emailUser:'d@gmail.com', publication:'insertidumbre total'},
-    //     {_id:'38jkdsj', emailUser:'e@gmail.com', publication:'a ver si empezando año todo se pone mejor'},
-    //     {_id:'asdl93_a', emailUser:'f@gmail.com', publication:'mucha abundancia llegara!!'}
-    //   ]
-    // }
-  ]
-
   constructor(private authSvc:AuthService, private firestoreSvc:FirebaseServiceService) { }
 
   ngOnInit(): void {
+    // al iniciar el componente traemos todos los estados , para presentarlos en pantalla
     this.getNotices();
   }
 
 
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se encarga 
+   * de llamar el servicio que retorna 
+   * la lista de las noticias
+   */
   getNotices(){
     this.firestoreSvc.getNotices().subscribe(response =>{
         this.notices = response.map((e:any)=>{
@@ -79,7 +52,15 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  
+
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se encarga
+   * de resivir el mensaje del componente hijo
+   * para posteriormente pasar a guardarlo en la
+   * base de datos (firebase)
+   * @param event
+   */
   toPost(event){
     this.firestoreSvc.createNotice({
       emailUser : this.user.email,
@@ -95,7 +76,12 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  
+
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se encarga 
+   * @param row
+   */
   viewComments(row){
     if(this.notices[this.getKeyObject(row._id)].viewComments){
       this.notices[this.getKeyObject(row._id)].viewComments = false;
@@ -104,7 +90,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // AGREGAR A BASE DE DATOS
+
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se encarga
+   * de permitirle a los usuarios comentar diferentes estados publicados
+   * @param row
+   */
   onComment(row){
     if(this.commentForm.get('commentText').value){
       this.notices[this.getKeyObject(row._id)].comments.push(
@@ -122,7 +114,12 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // AGREGAR A BASE DE DATOS
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se le permite 
+   * a los usuarios darle like a las diferentes publicaciones
+   * @param row
+   */
   moreLike(row){
     this.notices[this.getKeyObject(row._id)].likes =  this.notices[this.getKeyObject(row._id)].likes + 1;
 
@@ -136,8 +133,14 @@ export class HomeComponent implements OnInit {
   }
 
 
-
-
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se encarga
+   * de permitirle al usuario que creo 
+   * una publicacion eliminarla
+   *  (solo podra eliminar publicaciones que alla publicado el usuario mas no la de otros usuarios)
+   * @param id
+   */
   deletePost(id){
     this.firestoreSvc.deleteNotice(id).then(response =>{
       // AGREGAR MENSAJE
@@ -148,8 +151,11 @@ export class HomeComponent implements OnInit {
   }
 
 
-
-  
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que sirve para allar values dentro de un array
+   * @param _id
+   */
   getKeyObject(_id) {
     return this.notices.map((e) => {
       return e._id;

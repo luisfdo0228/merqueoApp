@@ -25,17 +25,19 @@ export class NavbarComponent {
    * menu(items) en modo responsivo
    */
   responsiveMenu() {
-
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
       x.className += " responsive";
     } else {
       x.className = "topnav";
     }
-
   }
-
   
+
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que ayuda al usuario cerrar la sesión
+   */
   async onLogout(){
     try {
       await this.authSvc.logout();

@@ -12,7 +12,12 @@ export class AuthService {
   constructor(public afAuth: AngularFireAuth) { }
 
 
-
+  /**
+   * @author Luis Fernando Hernandez
+   * @param email 
+   * @param password 
+   * @description servicio que comunica con firebase para logearse
+   */
   async login(email:string, password:string){
     try {
       const result = await this.afAuth.signInWithEmailAndPassword(email, password)
@@ -23,6 +28,12 @@ export class AuthService {
   }
 
 
+  /**
+   * @author Luis Fernando Hernandez
+   * @param email 
+   * @param password 
+   * @description servicio que comunica con firebase para registrarse
+   */
   async register(email:string, password:string){
     try {
       const result = await this.afAuth.createUserWithEmailAndPassword(email, password);
@@ -33,6 +44,12 @@ export class AuthService {
   }
 
 
+  /**
+   * @author Luis Fernando Hernandez
+   * @param email 
+   * @param password 
+   * @description servicio que comunica con firebase para cerrar sesion
+   */
   async logout(){
     try {
       await this.afAuth.signOut();
@@ -41,13 +58,4 @@ export class AuthService {
     }
   }
 
-
-  getCurrentUser(){
-    try {
-      return this.afAuth.authState.pipe(first()).toPromise();
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  
 }

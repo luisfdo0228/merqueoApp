@@ -1,17 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
+import { FirebaseServiceService } from 'src/app/auth/services/firebase-service.service';
+import { of, throwError } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
-    })
-    .compileComponents();
-  });
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [HomeComponent],
+      providers: [FirebaseServiceService]
+      
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
@@ -19,7 +23,6 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
+
 });

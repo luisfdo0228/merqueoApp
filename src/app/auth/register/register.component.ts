@@ -28,6 +28,12 @@ export class RegisterComponent implements OnInit {
   }
 
 
+  /**
+   * @author Luis Fernando Hernandez
+   * @description Metodo que se encarga
+   * de permitirle a las personas crear
+   * un usuario para que posterior a ello pasen a realizar publicaciones
+   */
   async onRegister(){
     const {email, password} = this.registerForm.value;
     try {
@@ -44,7 +50,9 @@ export class RegisterComponent implements OnInit {
   }
 
 
-
+  /**
+   * @description mensajes de salida
+   */
   presentMessage(){
     this.messageTextEmail = 'valide que la dirección de correo electrónico este bien formateada';
     this.messageTextPassword = 'valide que la contraseña tenga al menos 6 caracteres';
@@ -55,6 +63,9 @@ export class RegisterComponent implements OnInit {
   }
 
 
+  /**
+   * @description mensajes de salida
+   */
   presentMessageSuccess(){
     this.registerForm.get('email').setValue('');
     this.registerForm.get('password').setValue('');
